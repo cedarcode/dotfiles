@@ -2,7 +2,7 @@
 
 set -e
 
-echo "== vim/install: start"
+echo "==== vim/install: start"
 
 if [ ! -e ~/.vim ]; then
   git clone https://github.com/spastorino/vinimum.git ~/.vim
@@ -19,4 +19,4 @@ git submodule update
 git submodule deinit plugins/sbt
 cd -
 
-echo "== vim/install: finished"
+echo "==== vim/install: finished"

@@ -2,6 +2,8 @@
 
 set -e
 
+echo "==== ruby/install: start"
+
 # install ruby-install
 RUBY_INSTALL_VERSION=0.6.1
 wget https://raw.github.com/postmodern/postmodern.github.io/master/postmodern.asc
@@ -51,3 +53,5 @@ function append_to_file() {
 CUSTOM_SHELL_CONFIG_STRING=". ~/.dotfiles/ruby/config.shell"
 
 append_to_file "$CUSTOM_SHELL_CONFIG_STRING" ~/.bashrc
+
+echo "==== ruby/install: finished"
