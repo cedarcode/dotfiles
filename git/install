@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "git/install: start"
+
+if [ ! -e ~/.config/git/config ]; then
+  mkdir --p ~/.config/git
+
+  ln -s ~/.dotfiles/git/config ~/.config/git/config
+fi
+
+echo "git/install: finished"
