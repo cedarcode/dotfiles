@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -38,3 +38,16 @@ rm -r chruby-${CHRUBY_VERSION}/
 if [ ! -e ~/.ruby-version ]; then
   ln -s ~/.dotfiles/ruby/default_version ~/.ruby-version
 fi
+
+function append_to_file() {
+  contents="$1"
+  file_path="$2"
+
+  if ! grep -q "$contents" $file_path; then
+    echo "$contents" >> $file_path
+  fi
+}
+
+CUSTOM_SHELL_CONFIG_STRING=". ~/.dotfiles/ruby/config.shell"
+
+append_to_file "$CUSTOM_SHELL_CONFIG_STRING" ~/.bashrc
