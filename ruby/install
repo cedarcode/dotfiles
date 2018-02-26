@@ -1,0 +1,40 @@
+#!/bin/sh
+
+set -e
+
+# install ruby-install
+RUBY_INSTALL_VERSION=0.6.1
+wget https://raw.github.com/postmodern/postmodern.github.io/master/postmodern.asc
+gpg --import postmodern.asc
+rm postmodern.asc
+wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-${RUBY_INSTALL_VERSION}.tar.gz.asc
+wget -O ruby-install-${RUBY_INSTALL_VERSION}.tar.gz https://github.com/postmodern/ruby-install/archive/v${RUBY_INSTALL_VERSION}.tar.gz
+gpg --verify ruby-install-${RUBY_INSTALL_VERSION}.tar.gz.asc ruby-install-${RUBY_INSTALL_VERSION}.tar.gz
+rm ruby-install-${RUBY_INSTALL_VERSION}.tar.gz.asc
+tar -xzvf ruby-install-${RUBY_INSTALL_VERSION}.tar.gz
+rm ruby-install-${RUBY_INSTALL_VERSION}.tar.gz
+cd ruby-install-${RUBY_INSTALL_VERSION}/
+sudo make install
+cd -
+rm -r ruby-install-${RUBY_INSTALL_VERSION}/
+
+# Install ruby
+ruby-install --no-reinstall ruby `head -n1 ~/.dotfiles/ruby/default_version`
+
+# Install chruby
+CHRUBY_VERSION=0.3.9
+wget https://raw.github.com/postmodern/chruby/master/pkg/chruby-${CHRUBY_VERSION}.tar.gz.asc
+wget -O chruby-${CHRUBY_VERSION}.tar.gz https://github.com/postmodern/chruby/archive/v${CHRUBY_VERSION}.tar.gz
+gpg --verify chruby-${CHRUBY_VERSION}.tar.gz.asc chruby-${CHRUBY_VERSION}.tar.gz
+rm chruby-${CHRUBY_VERSION}.tar.gz.asc
+tar -xzvf chruby-${CHRUBY_VERSION}.tar.gz
+rm chruby-${CHRUBY_VERSION}.tar.gz
+cd chruby-${CHRUBY_VERSION}/
+sudo make install
+cd -
+rm -r chruby-${CHRUBY_VERSION}/
+
+# Set the default ruby version for the current OS user
+if [ ! -e ~/.ruby-version ]; then
+  ln -s ~/.dotfiles/ruby/default_version ~/.ruby-version
+fi
