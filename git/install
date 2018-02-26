@@ -2,7 +2,7 @@
 
 set -e
 
-echo "git/install: start"
+echo "==== git/install: start"
 
 if [ ! -e ~/.config/git/config ]; then
   mkdir --p ~/.config/git
@@ -10,4 +10,4 @@ if [ ! -e ~/.config/git/config ]; then
   ln -s ~/.dotfiles/git/config ~/.config/git/config
 fi
 
-echo "git/install: finished"
+echo "==== git/install: finished"
