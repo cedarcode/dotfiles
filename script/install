@@ -3,4 +3,7 @@
 set -e
 
 echo "== install: start"
+
+. ~/.dotfiles/ruby/install
+
 echo "== install: finished"
