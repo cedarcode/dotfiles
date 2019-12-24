@@ -5,18 +5,12 @@ set -e
 echo "==== vim/install: start"
 
 if [ ! -e ~/.vim ]; then
-  git clone https://github.com/spastorino/vinimum.git ~/.vim
-fi
-
-if [ ! -e ~/.vimrc ]; then
-  ln -s ~/.vim/vimrc ~/.vimrc
+  git clone https://github.com/cedarcode/cedarvim ~/.vim
 fi
 
 cd ~/.vim
 git submodule init
 git submodule update
-# Temporary solution to bypass https://github.com/ktvoelker/sbt-vim/issues/4
-git submodule deinit plugins/sbt
 cd -
 
 echo "==== vim/install: finished"
