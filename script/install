@@ -4,6 +4,7 @@ set -e
 
 echo "==== install: start"
 
+. ~/.dotfiles/bash/install
 . ~/.dotfiles/git/install
 . ~/.dotfiles/ruby/install
 . ~/.dotfiles/vim/install

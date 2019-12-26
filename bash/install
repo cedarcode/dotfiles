@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -e
+
+function append_to_file() {
+  contents="$1"
+  file_path="$2"
+
+  if ! grep -q "$contents" $file_path; then
+    echo "$contents" >> $file_path
+  fi
+}
+
+echo "==== bash/install: start"
+
+CUSTOM_BASH_CONFIG_STRING=". ~/.dotfiles/bash/bashrc.after"
+
+append_to_file "$CUSTOM_BASH_CONFIG_STRING" ~/.bashrc
+
+echo "==== bash/install: finished"
