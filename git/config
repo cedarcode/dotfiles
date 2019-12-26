@@ -1,2 +1,9 @@
+[alias]
+	st = status
+	ch = checkout
+	c = commit
+	rb = rebase
 [color]
 	ui = true
+[core]
+	excludesfile = ~/.dotfiles/git/gitignore_global
