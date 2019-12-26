@@ -7,6 +7,7 @@ echo "==== install: start"
 . ~/.dotfiles/bash/install
 . ~/.dotfiles/git/install
 . ~/.dotfiles/ruby/install
+. ~/.dotfiles/js/install
 . ~/.dotfiles/vim/install
 
 echo "==== install: finished"
