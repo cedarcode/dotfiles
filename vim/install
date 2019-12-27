@@ -5,7 +5,7 @@ set -e
 echo "==== vim/install: start"
 
 if [ ! -e ~/.vim ]; then
-  git clone https://github.com/cedarcode/cedarvim ~/.vim
+  git clone git@github.com:cedarcode/cedarvim ~/.vim
 fi
 
 cd ~/.vim
